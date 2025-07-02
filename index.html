@@ -1,55 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>69420alt</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background-color: black;
-      color: white;
-      font-family: monospace;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-size: 32px;
-    }
-
-    button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 18px;
-      background: white;
-      color: black;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    iframe.hidden {
-      display: none;
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>69420alt</title>
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    background: black; color: white;
+    font-family: monospace;
+    display: flex; justify-content: center; align-items: center;
+    font-size: 32px;
+    cursor: pointer;
+    user-select: none;
+  }
+  #info {
+    text-align: center;
+  }
+</style>
 </head>
-<body>
-  <div>69420alt — Pudshi Owner</div>
-  <button onclick="start()">Enter</button>
+<body onclick="start()" id="body">
 
-  <iframe id="hiddenSite" class="hidden" src="https://yip.su/aura" allow="autoplay"></iframe>
-  <iframe id="audioPlayer" class="hidden"
-    src=""
-    allow="autoplay"
-    allowfullscreen>
-  </iframe>
+  <div id="info">
+    69420alt — Pudshi Owner<br><br>
+    <small>(Tap/click anywhere to start)</small>
+  </div>
 
-  <script>
-    function start() {
-      document.getElementById('hiddenSite').style.display = 'none';
-      document.getElementById('audioPlayer').src = "https://www.youtube.com/embed/nC8UkhA1Z4o?autoplay=1&mute=0&loop=1&playlist=nC8UkhA1Z4o";
-    }
-  </script>
+  <iframe id="hiddenSite" src="https://yip.su/aura" style="display:none;"></iframe>
+  <iframe id="audioPlayer" style="display:none;" allow="autoplay" allowfullscreen></iframe>
+
+<script>
+  function start() {
+    // Hide the tap message
+    document.getElementById('info').style.display = 'none';
+
+    // Load hidden site iframe (kept hidden)
+    document.getElementById('hiddenSite').style.display = 'none';
+
+    // Start playing music
+    document.getElementById('audioPlayer').src = "https://www.youtube.com/embed/nC8UkhA1Z4o?autoplay=1&loop=1&playlist=nC8UkhA1Z4o";
+
+    // Remove click listener after starting
+    document.getElementById('body').onclick = null;
+  }
+</script>
 </body>
 </html>
