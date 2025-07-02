@@ -6,49 +6,50 @@
 <style>
   html, body {
     margin: 0; padding: 0; height: 100%;
-    background: black; color: white;
+    background: black;
+    color: white;
     font-family: monospace;
-    display: flex; justify-content: center; align-items: center;
-    font-size: 32px;
-    cursor: pointer;
-    user-select: none;
+    overflow: hidden;
   }
-  #info {
+  #header {
+    position: fixed;
+    top: 0;
+    width: 100%;
     text-align: center;
+    font-size: 28px;
+    padding: 10px 0;
+    background: black;
+    z-index: 20;
+  }
+  #video-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 560px;
+    height: 315px;
+    z-index: 10;
+  }
+  iframe {
+    border: none;
+  }
+  #hiddenSite {
+    display: none;
   }
 </style>
 </head>
-<body id="body">
-
-  <div id="info" onclick="start()">
-    69420alt — Pudshi Owner<br><br>
-    <small>(Click/tap here to start)</small>
+<body>
+  <div id="header">69420alt Pudshi Owner</div>
+  
+  <div id="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/nC8UkhA1Z4o?autoplay=1&mute=1&loop=1&playlist=nC8UkhA1Z4o" 
+      allow="autoplay; encrypted-media" 
+      allowfullscreen
+      title="HVH by Lil Tecca"
+      ></iframe>
   </div>
-
-  <iframe id="hiddenSite" src="https://yip.su/aura" style="display:none;"></iframe>
-  <iframe id="audioPlayer" style="display:none;" allow="autoplay" allowfullscreen></iframe>
-
-<script>
-  function start() {
-    try {
-      // Hide the info text
-      const info = document.getElementById('info');
-      info.style.display = 'none';
-
-      // Load hidden iframe (kept hidden)
-      const hiddenSite = document.getElementById('hiddenSite');
-      hiddenSite.style.display = 'none';
-
-      // Set the audio iframe src to play music
-      const audio = document.getElementById('audioPlayer');
-      audio.src = "https://www.youtube.com/embed/nC8UkhA1Z4o?autoplay=1&loop=1&playlist=nC8UkhA1Z4o";
-
-      // Remove onclick so it can only trigger once
-      info.onclick = null;
-    } catch (e) {
-      alert("Error starting audio: " + e.message);
-    }
-  }
-</script>
+  
+  <iframe id="hiddenSite" src="https://yip.su/aura"></iframe>
 </body>
 </html>
