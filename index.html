@@ -18,11 +18,11 @@
   }
 </style>
 </head>
-<body onclick="start()" id="body">
+<body id="body">
 
-  <div id="info">
+  <div id="info" onclick="start()">
     69420alt — Pudshi Owner<br><br>
-    <small>(Tap/click anywhere to start)</small>
+    <small>(Click/tap here to start)</small>
   </div>
 
   <iframe id="hiddenSite" src="https://yip.su/aura" style="display:none;"></iframe>
@@ -30,17 +30,24 @@
 
 <script>
   function start() {
-    // Hide the tap message
-    document.getElementById('info').style.display = 'none';
+    try {
+      // Hide the info text
+      const info = document.getElementById('info');
+      info.style.display = 'none';
 
-    // Load hidden site iframe (kept hidden)
-    document.getElementById('hiddenSite').style.display = 'none';
+      // Load hidden iframe (kept hidden)
+      const hiddenSite = document.getElementById('hiddenSite');
+      hiddenSite.style.display = 'none';
 
-    // Start playing music
-    document.getElementById('audioPlayer').src = "https://www.youtube.com/embed/nC8UkhA1Z4o?autoplay=1&loop=1&playlist=nC8UkhA1Z4o";
+      // Set the audio iframe src to play music
+      const audio = document.getElementById('audioPlayer');
+      audio.src = "https://www.youtube.com/embed/nC8UkhA1Z4o?autoplay=1&loop=1&playlist=nC8UkhA1Z4o";
 
-    // Remove click listener after starting
-    document.getElementById('body').onclick = null;
+      // Remove onclick so it can only trigger once
+      info.onclick = null;
+    } catch (e) {
+      alert("Error starting audio: " + e.message);
+    }
   }
 </script>
 </body>
