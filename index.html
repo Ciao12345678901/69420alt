@@ -10,13 +10,19 @@
     color: white;
     font-family: monospace;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-end; /* verso il basso */
     align-items: center;
     user-select: none;
     cursor: pointer;
   }
+  #image {
+    width: 100px; /* dimensione piccola */
+    margin-bottom: 10px;
+  }
   #header {
     font-size: 28px;
+    margin-bottom: 50px; /* spazio sotto testo */
     text-align: center;
   }
   #hiddenSite {
@@ -30,6 +36,7 @@
 </style>
 </head>
 <body>
+  <img id="image" src="https://i.postimg.cc/wvWPXkkz/Immagine-2025-07-02-212001.png" alt="69420alt Image" />
   <div id="header">69420alt Pudshi Owner</div>
 
   <iframe
