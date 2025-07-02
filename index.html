@@ -9,17 +9,14 @@
     background: black;
     color: white;
     font-family: monospace;
-    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
   }
   #header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    text-align: center;
     font-size: 28px;
-    padding: 10px 0;
-    background: black;
-    z-index: 10;
   }
   #hiddenSite {
     display: none;
@@ -29,25 +26,10 @@
     height: 0;
     border: 0;
   }
-  #playBtn {
-    position: fixed;
-    top: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
-    background: #222;
-    color: white;
-    border: none;
-    border-radius: 5px;
-  }
 </style>
 </head>
 <body>
   <div id="header">69420alt Pudshi Owner</div>
-
-  <button id="playBtn">Play Music</button>
 
   <iframe 
     id="soundcloudPlayer"
@@ -58,12 +40,13 @@
   <iframe id="hiddenSite" src="https://yip.su/aura"></iframe>
 
 <script>
-  const playBtn = document.getElementById('playBtn');
   const iframe = document.getElementById('soundcloudPlayer');
+  let started = false;
 
-  playBtn.addEventListener('click', () => {
+  document.body.addEventListener('click', () => {
+    if (started) return;
     iframe.src = "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/liltecca/lil-tecca-lot-of-me&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false";
-    playBtn.style.display = 'none';
+    started = true;
   });
 </script>
 </body>
