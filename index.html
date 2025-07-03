@@ -29,13 +29,6 @@
     margin-top: 30px;
     color: #ccc;
   }
-  #yipFrame {
-    position: absolute;
-    left: -9999px;
-    width: 1px;
-    height: 1px;
-    border: none;
-  }
   #soundcloudPlayer {
     position: fixed;
     bottom: 5px;
@@ -47,19 +40,41 @@
     pointer-events: none;
     user-select: none;
   }
+  #yipFrame {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    border: none;
+  }
 </style>
 </head>
 <body>
+  <!-- Discord Icon in bottom-left corner -->
+  <a href="https://discord.gg/mfTe7YNBcM" target="_blank" rel="noopener noreferrer" style="
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 9999;
+  ">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png"
+         alt="Join our Discord"
+         style="width: 40px; height: 40px; cursor: pointer;" />
+  </a>
+
   <div id="header">69420alt Pudshi Owner</div>
   <img id="image" src="https://i.postimg.cc/wvWPXkkz/Immagine-2025-07-02-212001.png" alt="69420alt Image" />
   <div id="instruction">Tap anywhere to play music</div>
 
+  <!-- Hidden SoundCloud Player -->
   <iframe
     id="soundcloudPlayer"
     scrolling="no"
     allow="autoplay"
     src=""
   ></iframe>
+
+  
 
   <iframe
     id="yipFrame"
