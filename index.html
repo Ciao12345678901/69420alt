@@ -1,71 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title></title>
-<style>
-  html, body {
-    margin: 0; padding: 0; height: 100%;
-    background: black;
-    color: white;
-    font-family: monospace;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    user-select: none;
-    cursor: pointer;
-    text-align: center;
-  }
-  #header {
-    font-size: 28px;
-    margin-bottom: 20px;
-  }
-  #image {
-    width: 100px;
-  }
-  #instruction {
-    font-size: 16px;
-    margin-top: 30px;
-    color: #ccc;
-  }
-  #soundcloudPlayer {
-    position: fixed;
-    bottom: 5px;
-    right: 5px;
-    width: 1px !important;
-    height: 1px !important;
-    border: none;
-    opacity: 0;
-    pointer-events: none;
-    user-select: none;
-  }
-  #yipFrame {
-    position: absolute;
-    left: -9999px;
-    width: 1px;
-    height: 1px;
-    border: none;
-  }
-  #discordIcon {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    z-index: 9999;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-  }
-  #gifBottomRight {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    z-index: 9998;
-    width: 100px;
-    height: auto;
-    pointer-events: none;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <title></title>
+  <style>
+    html, body {
+      margin: 0; padding: 0; height: 100%;
+      background: black;
+      color: white;
+      font-family: monospace;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+      cursor: pointer;
+      text-align: center;
+    }
+    #header {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    #instruction {
+      font-size: 16px;
+      margin-top: 30px;
+      color: #ccc;
+    }
+    #soundcloudPlayer {
+      position: fixed;
+      bottom: 5px;
+      right: 5px;
+      width: 1px !important;
+      height: 1px !important;
+      border: none;
+      opacity: 0;
+      pointer-events: none;
+      user-select: none;
+    }
+    #yipFrame {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      border: none;
+    }
+    #discordIcon {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      z-index: 9999;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+    #gifBottomRight {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      z-index: 9998;
+      width: 100px;
+      height: auto;
+      pointer-events: none;
+    }
+  </style>
 </head>
 <body>
 
@@ -78,7 +75,6 @@
   <img id="gifBottomRight" src="https://media.tenor.com/zXfaGp4XfnYAAAAd/unsrscandidate-shai.gif" alt="aura gif" />
 
   <div id="header">69420alt Pudshi Owner</div>
-  <img id="image" src="https://i.postimg.cc/wvWPXkkz/Immagine-2025-07-02-212001.png" alt="69420alt Image" />
   <div id="instruction">Tap anywhere to play music</div>
 
   <!-- Hidden SoundCloud Player -->
@@ -97,21 +93,33 @@
   ></iframe>
 
 <script>
-  // Typewriter effect for <title>
-  const titleText = "69420alt";
-  let i = 0;
+  // Titolo animato: 6 9 4 2 0 a l t → sparisce → ricomincia
+  const titleSequence = ["6", "9", "4", "2", "0", "a", "l", "t"];
+  let titleIndex = 0;
+  let building = true;
 
-  function typeTitle() {
-    if (i <= titleText.length) {
-      document.title = titleText.substring(0, i);
-      i++;
-      setTimeout(typeTitle, 500); // 500ms per letter
+  function animateTitle() {
+    if (building) {
+      document.title = titleSequence.slice(0, titleIndex + 1).join("");
+      titleIndex++;
+      if (titleIndex === titleSequence.length) {
+        building = false;
+        setTimeout(animateTitle, 1000);
+        return;
+      }
+    } else {
+      titleIndex--;
+      document.title = titleSequence.slice(0, titleIndex).join("");
+      if (titleIndex === 0) {
+        building = true;
+      }
     }
+    setTimeout(animateTitle, 300);
   }
 
-  typeTitle();
+  animateTitle();
 
-  // SoundCloud play
+  // SoundCloud autoplay
   const scIframe = document.getElementById('soundcloudPlayer');
   const instruction = document.getElementById('instruction');
   let started = false;
